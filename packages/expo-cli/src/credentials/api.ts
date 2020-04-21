@@ -94,9 +94,8 @@ export class IosApi {
     return updatedDistCert;
   }
 
-  // TODO
   async deleteDistCert(credentialsId: number) {
-    await this.api.deleteAsync(`credentials/ios/dist/${credentialsId}`);
+    await this.api.deleteAsync(`credentials/ios/dist/${credentialsId}`, { owner: this.username });
     this.credentials.userCredentials = this.credentials.userCredentials.filter(
       ({ id }) => id !== credentialsId
     );
